@@ -66,6 +66,31 @@ abstract class Manager{
             die();
         }
     }
+
+    public function edit($data, $id)
+    {
+ 
+        $setStatements = [];
+ 
+        foreach ($data as $key => $value) {
+            $setStatements[] = "$key = :$key";
+        }
+ 
+        $setClause = implode(',', $setStatements);
+ 
+        $sql = "UPDATE " . $this->tableName . "
+        SET " . $setClause . "
+        WHERE id_" . $this->tableName . " = :id
+        ";
+ 
+        try {
+            $data['id'] = $id;
+            return DAO::update($sql, $data);
+        } catch (\PDOException $e) {
+            echo $e->getMessage();
+            die();
+        }
+    }
     
     public function delete($id){
         $sql = "DELETE FROM ".$this->tableName."

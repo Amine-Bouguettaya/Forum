@@ -7,7 +7,12 @@
 <?php
 foreach($categories as $category ){ ?>
     <p><a href="index.php?ctrl=forum&action=listTopicsByCategory&id=<?= $category->getId() ?>"><?= $category->getCategoryName() ?></a></p>
-<?php }
+<?php } ?>
+
+<form action="index.php?ctrl=forum&action=createCategory" method="post">
+    <input type="text" name="categoryName" placeholder="Nom de la catégorie">
+    <input type="submit" value="Créer une catégorie">
+</form>
 
 
   
