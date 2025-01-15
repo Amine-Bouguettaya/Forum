@@ -209,3 +209,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         ];
     }
 }
+
+inscription
+login
+post par topic
