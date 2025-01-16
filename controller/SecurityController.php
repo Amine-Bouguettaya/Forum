@@ -20,11 +20,10 @@ class SecurityController extends AbstractController{
 
         if ($username && $email && $password && $passwordconf && $terms) {
             if ($password == $passwordconf) {
-                if (strlen($password) < 5) {
+                if (strlen($password) < 8 && !preg_match("/[^a-zA-Z0-9\W]/", $password)) {
                     Session::addFlash("error", "Le mot de passe doit contenir au moins 8 caractères");
                     $this->redirectTo("security", "register");
                 }
-                echo "test";
                 $userManager = new UserManager();
                 $userbd = $userManager->findOneByName(["username" => $username]);
                 $emailbd = $userManager->findOneByName(["email" => $email]);

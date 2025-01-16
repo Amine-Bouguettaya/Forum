@@ -19,7 +19,7 @@
                 <a href="index.php?ctrl=home">Tech'Talk</a>
             </div>
             <div>
-                <form action="#">
+                <form action="index.php?ctrl=home&action=search" method="post">
                 <div class="search-container">
                     <input type="text" placeholder="Rechercher...">
                 </div>
@@ -34,7 +34,7 @@
                                 ?>
                                 <a href="index.php?ctrl=home&action=users">Users</a>
                             <?php } ?>
-                    <a href="index.php?ctrl=security&action=profile">Mon Compte</a>
+                    <a href="index.php?ctrl=profile&action=index&id= <?= App\Session::GetUser()->getId() ?>">Mon Compte</a>
                     <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
                     <?php } else { ?>
                             <a href="index.php?ctrl=security&action=login">Connexion</a>

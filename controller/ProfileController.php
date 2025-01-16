@@ -29,5 +29,31 @@ class ProfileController extends AbstractController implements ControllerInterfac
         ];
     }
 
+    public function modify() {
+        $userManager = new UserManager();
+        $user = $userManager->findOneById(Session::getUser()->getId());
+
+        return [
+            "view" => VIEW_DIR."security/modify.php",
+            "meta_description" => "Page de modification de profile",
+            "data" => [
+                "user" => $user
+            ]
+        ];
+    }
+
+    public function modifyRole() {
+        $this->restrictTo("ROLE_ADMIN");
+
+        $userManager = new UserManager();
+        $user = $userManager->findOneById($_GET['id']);
+        $role = filter_input(INPUT_POST, "role", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if ($role) {
+            $userManager->edit(["role" => $role], $_GET['id']);
+        }
+
+        $this->redirectTo("home", "users");
+    }
     
 }

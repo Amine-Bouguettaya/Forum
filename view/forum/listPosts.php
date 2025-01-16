@@ -38,10 +38,13 @@ foreach($posts as $post ){ ?>
 
 ?>
 <br>
-
+<?php 
+    if ((App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) || App\Session::isAdmin()) {
+        ?>
 <a href="index.php?ctrl=forum&action=deleteTopic&id=<?=$topic->getId()?>">delete Topic</a>
 
 <?php 
+    }
     if ($topic->getClosed() == "OPEN" && (App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId() || App\Session::isAdmin())) {
         ?>
 <a href="index.php?ctrl=forum&action=manageTopic&id=<?=$topic->getId()?>">Close Topic</a>
