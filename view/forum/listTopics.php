@@ -14,9 +14,12 @@ foreach($topics as $topic ){ ?>
 <?php }
 } ?>
 
-
+<?php if (App\Session::getUser()) { ?>
+    <h2>Créer un topic</h2>
 <form action="index.php?ctrl=forum&action=createTopic&id=<?=$category->getId()?>" method="post">
     <input type="text" name="title" placeholder="Nom du Topic">
     <input type="text" name="text" placeholder="Premier post du topic">
     <input type="submit" value="Créer un topic">
 </form>
+
+<?php } ?>

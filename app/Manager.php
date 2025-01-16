@@ -28,6 +28,22 @@ abstract class Manager{
             $this->className
         );
     }
+
+    public function findOneByName($data){
+
+        $key = array_keys($data);
+        $value = array_values($data);
+
+        $sql = "SELECT *
+                FROM ".$this->tableName." a
+                WHERE a.".$key[0]." = :".$key[0]."
+                ";
+
+        return $this->getOneOrNullResult(
+            DAO::select($sql, [$key[0] => $value[0]], false), 
+            $this->className
+        );
+    }
     
     public function findOneById($id){
 

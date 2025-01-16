@@ -98,8 +98,8 @@ class ForumController extends AbstractController implements ControllerInterface{
         $newpost = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         if ($newtopic && $newpost) {
-            $newTopicId = $topicManager->add(["title" => $newtopic, "category_id" => $id]);
-            $postManager->add(["text" => $newpost, "topic_id" => $newTopicId]);
+            $newTopicId = $topicManager->add(["title" => $newtopic, "category_id" => $id, "user_id" => Session::getUser()->getId()]);
+            $postManager->add(["text" => $newpost, "topic_id" => $newTopicId, "user_id" => Session::getUser()->getId()]);
 
             $topic = $topicManager->findOneById($newTopicId);
             $posts = $postManager->findPostByTopics($newTopicId);
@@ -135,7 +135,7 @@ class ForumController extends AbstractController implements ControllerInterface{
         $newpost = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
         if ($newpost) {
-            $postManager->add(["text" => $newpost, "topic_id" => $id]);
+            $postManager->add(["text" => $newpost, "topic_id" => $id, "user_id" => Session::getUser()->getId()]);
         }
 
         $posts = $postManager->findPostByTopics($id);
@@ -191,10 +191,14 @@ class ForumController extends AbstractController implements ControllerInterface{
         $postManager = new PostManager();
 
         $topic = $topicManager->findOneById($id);
-        if ($topic->getClosed() == 0) {
-            $topicManager->edit(["closed" => 1], $id);
+        if ($topic->getClosed() == "OPEN") {
+            if (Session::isAdmin()) {
+                $topicManager->edit(["closed" => "CLOSED_ADMIN"], $id);
+            } else {
+                $topicManager->edit(["closed" => "CLOSED"], $id);
+            }
         } else {
-            $topicManager->edit(["closed" => 0], $id);
+            $topicManager->edit(["closed" => "OPEN"], $id);
         }
 
         $topic = $topicManager->findOneById($id);
@@ -210,6 +214,3 @@ class ForumController extends AbstractController implements ControllerInterface{
     }
 }
 
-inscription
-login
-post par topic

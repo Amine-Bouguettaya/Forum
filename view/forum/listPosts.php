@@ -2,7 +2,7 @@
     $topic = $result["data"]['topic'] ;
     $posts = $result["data"]['posts']; 
 
-    if ($topic->getClosed() == false) {
+    if (($topic->getClosed() == "OPEN" && App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId()) || App\Session::isAdmin()) {
         ?>
 
 <form action="index.php?ctrl=forum&action=editTopic&id=<?=$topic->getId()?>" method="post">
@@ -21,14 +21,14 @@ if($posts == null){
 foreach($posts as $post ){ ?>
 <a href="index.php?ctrl=forum&action="><?= $post ?></a>
 <p>par</p>
-    <a href="index.php?ctrl=profile&action=index&id=<?=$topic->getUser()->getId()?>"><?= $post->getUser() ?></a>
+    <a href="index.php?ctrl=profile&action=index&id=<?=$topic->getUser()->getId()?>"><?= $post->getUser()->getUsername() ?></a>
     <br>
     <br>
 <?php }
 } ?>
 
 <?php 
-    if ($topic->getClosed() == false) {
+    if ($topic->getClosed() == "OPEN" && App\Session::getUser()) {
         ?>
         <form action="index.php?ctrl=forum&action=createPost&id=<?=$topic->getId()?>" method="post">
             <input type="text" name="text" placeholder="votre post">
@@ -42,11 +42,11 @@ foreach($posts as $post ){ ?>
 <a href="index.php?ctrl=forum&action=deleteTopic&id=<?=$topic->getId()?>">delete Topic</a>
 
 <?php 
-    if ($topic->getClosed() == false) {
+    if ($topic->getClosed() == "OPEN" && (App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId() || App\Session::isAdmin())) {
         ?>
 <a href="index.php?ctrl=forum&action=manageTopic&id=<?=$topic->getId()?>">Close Topic</a>
 <?php  }
-    if ($topic->getClosed() == true) { ?>
+    if (($topic->getClosed() == "CLOSED" && (App\Session::getUser() && App\Session::getUser()->getId() == $topic->getUser()->getId() || App\Session::isAdmin())) || ($topic->getClosed() == "CLOSED_ADMIN" && App\Session::isAdmin())) { ?>
         <a href="index.php?ctrl=forum&action=manageTopic&id=<?=$topic->getId()?>">open Topic</a> <?php
     }
 
