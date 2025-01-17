@@ -23,9 +23,17 @@ header {
     flex-direction: row;
     justify-content: space-between;
 }
-#forum {
 
-    min-height: 60vh;
+#forum {
+    min-height: 61vh;
+}
+
+.register {
+    min-height: 63.5vh;
+}
+
+.login {
+    min-height: 63.5vh;
 }
 
 .message {
@@ -189,6 +197,17 @@ header {
     border-radius: 20px;
 
 }
+
+.formContainerlogin {
+    display: flex;
+    flex-direction: column;
+    width:35%;
+    margin: auto;
+    padding: 10vh 2em;
+    background-color: #ffffffca;
+    border-radius: 20px;
+}
+
 .formInfo {
     display: flex;
     justify-content: space-between;
@@ -211,14 +230,15 @@ header {
     flex-direction: column;
 }
 
+.form-gridlogin {
+    display: flex;
+    flex-direction: column;
+}
+
 .form-group input {
     padding: 0.3em;
     border-radius: 5px;
     border: 1px solid #a7a7a7;
-}
-
-.form-group input:focus {
-    border-color: red;
 }
 
 .endForm {

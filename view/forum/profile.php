@@ -24,8 +24,7 @@ if ($posts == null) {
 
 if ($posts) {
     
-foreach($posts as $post) {
-    var_dump($post);?>
+foreach($posts as $post) { ?>
 
     <a href="index.php?ctrl=forum&action=findPostsByTopic&id=<?=$post->getTopic()->getId() ?>"><?=$post?></a>   
     <spam> par </span>

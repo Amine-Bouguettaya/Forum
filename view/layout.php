@@ -49,7 +49,6 @@
                 <h3 class="message" style="color: green"><?= App\Session::getFlash("success") ?></h3>
 
                 <?= app\Session::getUser() ?>
-                <a href="index.php?ctrl=forum&action=index">Liste des catégories</a>
                 <main id="forum">
                     <?= $page ?>
                 </main>

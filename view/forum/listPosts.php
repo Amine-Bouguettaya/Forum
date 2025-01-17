@@ -20,10 +20,10 @@ if($posts == null){
 } else {
 foreach($posts as $post ){ ?>
 <p><?= $post ?></p>
-<?php if ($post->getUser() && $post->getUser()->getId() == App\Session::getUser()->getId()) { ?>
+<?php if (($post->getUser() && App\Session::getUser()) && ($post->getUser()->getId() == App\Session::getUser()->getId())) { ?>
 <a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId()?>">Modifier</a>
 <?php } ?>
-<?php if (($post->getUser() && $post->getUser()->getId() == App\Session::getUser()->getId()) || App\Session::isAdmin()) { ?>
+<?php if (($post->getUser() && App\Session::getUser()) && ($post->getUser()->getId() == App\Session::getUser()->getId()) || App\Session::isAdmin()) { ?>
 <a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId()?>">Supprimer</a>
 <?php } ?>
 <span>par</span>
