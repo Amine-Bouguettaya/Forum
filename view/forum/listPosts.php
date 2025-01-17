@@ -19,9 +19,19 @@ if($posts == null){
     echo "<p>Il n'y a pas de post dans ce topic</p>";
 } else {
 foreach($posts as $post ){ ?>
-<a href="index.php?ctrl=forum&action="><?= $post ?></a>
-<p>par</p>
+<p><?= $post ?></p>
+<?php if ($post->getUser() && $post->getUser()->getId() == App\Session::getUser()->getId()) { ?>
+<a href="index.php?ctrl=forum&action=updatePost&id=<?= $post->getId()?>">Modifier</a>
+<?php } ?>
+<?php if (($post->getUser() && $post->getUser()->getId() == App\Session::getUser()->getId()) || App\Session::isAdmin()) { ?>
+<a href="index.php?ctrl=forum&action=deletePost&id=<?= $post->getId()?>">Supprimer</a>
+<?php } ?>
+<span>par</span>
+    <?php if ($post->getUser()) { ?>
     <a href="index.php?ctrl=profile&action=index&id=<?=$topic->getUser()->getId()?>"><?= $post->getUser()->getUsername() ?></a>
+    <?php } else { ?>
+        <span>Utilisateur Supprimé</span>
+    <?php } ?>
     <br>
     <br>
 <?php }

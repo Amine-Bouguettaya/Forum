@@ -29,6 +29,17 @@ abstract class Manager{
         );
     }
 
+    public function searchBar($key, $value) {
+
+        $sql ="SELECT * FROM ".$this->tableName." a WHERE a.".$key." LIKE '%".$value."%'";
+
+        return $this->getMultipleResults(
+            DAO::select($sql),
+            $this->className
+        );
+    }
+
+    // permet de faire une recherche dans une table dans n'importe quel champ en fonction d'un nom exemple: recherche d'un profile via son email.
     public function findOneByName($data){
 
         $key = array_keys($data);

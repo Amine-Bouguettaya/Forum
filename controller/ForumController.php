@@ -183,7 +183,7 @@ class ForumController extends AbstractController implements ControllerInterface{
 
         $topicManager->delete($id);
 
-        header("location:index.php?ctrl=forum&action=index");
+        $this->redirectTo("forum", "index");
     }
 
     public function manageTopic($id) {
@@ -211,6 +211,38 @@ class ForumController extends AbstractController implements ControllerInterface{
                 "posts" => $posts
             ]
         ];
+    }
+
+    public function updatePost($id) {
+
+        $postManager = new PostManager();
+
+        $newPost = filter_input(INPUT_POST, "text", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        if ($newPost) {
+            $postManager->edit(["text" => $newPost], $id);
+            $post1 = $postManager->findOneById($id);
+            $this->redirectTo("forum", "findPostsByTopic", $post1->getTopic()->getId());
+        }
+
+        $post = $postManager->findOneById($id);
+
+        return [
+            "view" => VIEW_DIR."forum/updatePost.php",
+            "meta_description" => "Modifier votre post",
+            "data" => [
+                "post" => $post
+            ]
+            ];
+    }
+
+    public function deletePost($id) {
+        $postManager = new PostManager();
+        $idTopic = $postManager->findOneById($id)->getTopic()->getId();
+        $postManager->delete($id);
+
+        
+        $this->redirectTo("forum", "findPostsByTopic", $idTopic);
     }
 }
 

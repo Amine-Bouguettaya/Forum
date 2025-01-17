@@ -18,11 +18,11 @@
                 <i class="fa-solid fa-laptop-code"></i>
                 <a href="index.php?ctrl=home">Tech'Talk</a>
             </div>
-            <div>
+            <div id="wrapSearch">
                 <form action="index.php?ctrl=home&action=search" method="post">
-                <div class="search-container">
-                    <input type="text" placeholder="Rechercher...">
-                </div>
+                    <div class="search-container">
+                        <input type="text" name="text" placeholder="Rechercher...">
+                    </div>
                 </form>
                 </div>
             <nav class="ButtonContainer">
@@ -32,13 +32,13 @@
                     // si utilisateur = admin
                             if( App\Session::isAdmin() ) {
                                 ?>
-                                <a href="index.php?ctrl=home&action=users">Users</a>
+                                <a href="index.php?ctrl=home&action=users" class="buttonNav2">Users</a>
                             <?php } ?>
-                    <a href="index.php?ctrl=profile&action=index&id= <?= App\Session::GetUser()->getId() ?>">Mon Compte</a>
-                    <a href="index.php?ctrl=security&action=logout">Déconnexion</a>
+                    <a href="index.php?ctrl=profile&action=index&id= <?= App\Session::GetUser()->getId() ?>" class="buttonNav">Mon Compte</a>
+                    <a href="index.php?ctrl=security&action=logout" class="buttonNav2">Déconnexion</a>
                     <?php } else { ?>
-                            <a href="index.php?ctrl=security&action=login">Connexion</a>
-                            <a href="index.php?ctrl=security&action=register">Inscription</a>    
+                            <a href="index.php?ctrl=security&action=login" class="buttonNav">Connexion</a>
+                            <a href="index.php?ctrl=security&action=register" class="buttonNav2">Inscription</a>    
                     <?php } ?>
             </nav>
         </header>

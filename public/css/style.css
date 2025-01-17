@@ -5,8 +5,10 @@
 }
 
 :root {
-    --primary: #5075ED;
-    --secondary: #5099ED;
+    --primary: #302C7C;
+    --primaryhover: #21203c;
+    --secondary: #403CAC;
+    --secondaryhover: #241fa2;
     --text-light: #ffffff;
     --text-dark: #333333;
     --text-grey: #E6E6E6;
@@ -22,7 +24,12 @@ header {
     justify-content: space-between;
 }
 #forum {
+
     min-height: 60vh;
+}
+
+.message {
+    text-align: center;
 }
 
 .logoName{
@@ -79,6 +86,43 @@ header {
     color: #747474;
 }
 
+.ButtonContainer {
+    margin: 1.5em 2em;
+}
+
+.buttonNav {
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    background-color: var(--primary);
+    color: var(--text-light);
+    border: none;
+    font-size: medium;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 30%;
+    text-decoration: none;
+}
+
+.buttonNav:hover {
+    background-color: var(--secondaryhover);
+}
+
+
+.buttonNav2 {
+    padding: 0.5em 1em;
+
+    background-color: var(--primary);
+    color: var(--text-light);
+    border: none;
+    font-size: medium;
+    border-radius: 25px;
+    cursor: pointer;
+    width: 30%;
+    text-decoration: none;
+}
+.buttonNav2:hover {
+    background-color: var(--secondaryhover);
+}
 
 .icon-submit {
     background-color: transparent;
@@ -130,6 +174,67 @@ header {
     border: none;
     font-size: medium;
     border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    text-decoration: none;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    margin: auto;
+    padding: 10vh 2em;
+    background-color: #ffffffca;
+    border-radius: 20px;
+
+}
+.formInfo {
+    display: flex;
+    justify-content: space-between;
+}
+.formInfo > p > span {
+    color: red;
+}
+
+.form-group > label > span {
+    color: red;
+}
+
+.form-grid {
+    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group input {
+    padding: 0.3em;
+    border-radius: 5px;
+    border: 1px solid #a7a7a7;
+}
+
+.form-group input:focus {
+    border-color: red;
+}
+
+.endForm {
+    margin-top: 1.5em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.continue-btn {
+    padding: 0.5em 1em;
+    margin-right: 0.5em;
+    background-color: var(--primary);
+    color: var(--text-light);
+    border: none;
+    font-size: medium;
+    border-radius: 25px;
     cursor: pointer;
     width: 30%;
     text-decoration: none;
