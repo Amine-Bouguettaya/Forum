@@ -17,5 +17,4 @@ foreach($categories as $category ){ ?>
 
 <?php } ?>
 
-  
 https://codepen.io/groveet/pen/mpyYga
