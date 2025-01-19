@@ -15,10 +15,13 @@ class SecurityController extends AbstractController{
         array("options" => array("regexp" => "/[a-zA-Z0-9]/" )));
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
         $password = filter_input(INPUT_POST, "password", FILTER_VALIDATE_REGEXP, 
-        array("options" => array("regexp" => "/[a-zA-Z0-9]/" )));
+        array("options" => array("regexp" => "/^(?=.*[A-Z])(?=.*\d)(?=.*[\W]).*$/" )));
         $passwordconf = filter_input(INPUT_POST, "password", FILTER_VALIDATE_REGEXP, 
-        array("options" => array("regexp" => "/[a-zA-Z0-9]/" )));
+        array("options" => array("regexp" => "/^(?=.*[A-Z])(?=.*\d)(?=.*[\W]).*$/" )));
         $terms = filter_input(INPUT_POST, "terms", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        // var_dump($username, $email, $password, $passwordconf, $terms);
+        // die;
 
         if (isset($_POST["submit"])) {
             if ($username && $email && $password && $passwordconf && $terms) {

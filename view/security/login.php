@@ -5,7 +5,7 @@
             <p>Champ obligatoire<span>*</span></p>
         </div>
         <div class="wrapper">
-            <form action="index.php?ctrl=security&action=login" method="post">
+            <form action="index.php?ctrl=security&action=login" method="post" class ="formlogin">
                 <div class="form-gridlogin">
                     <div class="form-group">
                         <label for="email">Email<span>*</span></label>

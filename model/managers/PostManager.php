@@ -33,10 +33,22 @@ class PostManager extends Manager{
         $sql = "SELECT * 
                 FROM ".$this->tableName." t 
                 WHERE t.user_id = :id";
-       
-        // la requête renvoie plusieurs enregistrements --> getMultipleResults
+
         return  $this->getMultipleResults(
             DAO::select($sql, ['id' => $id]), 
+            $this->className
+        );
+    }
+
+    public function getLastPosts() {
+        
+        $sql = "SELECT * 
+                FROM ".$this->tableName." t 
+                ORDER BY t.creationDate DESC
+                LIMIT 5";
+
+        return  $this->getMultipleResults(
+            DAO::select($sql), 
             $this->className
         );
     }

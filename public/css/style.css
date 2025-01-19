@@ -14,6 +14,7 @@
     --text-grey: #E6E6E6;
 }
 
+
 h1 {
     color:  var(--primary);
 }
@@ -26,6 +27,11 @@ header {
 
 #forum {
     min-height: 61vh;
+}
+
+#forum > h1 {
+    text-align: center;
+    margin: 1em 0;
 }
 
 .register {
@@ -247,7 +253,7 @@ header {
     justify-content: space-between;
 }
 
-.continue-btn {
+input.continue-btn {
     padding: 0.5em 1em;
     margin-right: 0.5em;
     background-color: var(--primary);
@@ -258,4 +264,130 @@ header {
     cursor: pointer;
     width: 30%;
     text-decoration: none;
+}
+
+input.continue-btn:hover {
+    background-color: var(--secondaryhover);
+}
+
+.main-content {
+    display: flex;
+    flex-direction: row;
+    gap: 2em;
+    justify-content: center;
+}
+
+.homeCardContainer {
+    padding-left: 2em;
+    display: flex;
+    flex-direction: column;
+    width: 55%;
+}
+
+.sidebar {
+    width: 300px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.forum-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 2em;
+    border: 1px solid #e0e0e0;
+}
+
+.forum-header {
+    margin-bottom: 10px;
+}
+
+.forum-header > h2 {
+    font-size: 24px;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.forum-header > a {
+    text-decoration: none;
+    font-size: 18px;
+    color: var(--primary);
+    margin-bottom: 5px;
+}
+
+.forum-description {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.forum-stats {
+    display: flex;
+    justify-content: space-between;
+    color: #666;
+    font-size: 14px;
+}
+
+.stat-item {
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.button-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.button-primary:hover {
+    background-color: var(--secondaryhover);
+}
+
+.recent-activity {
+    margin-top: 20px;
+}
+
+.activity-item {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.activity-item > p > a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.activity-link {
+    color: #4338ca;
+    text-decoration: none;
+}
+
+.welcome-text {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.text-white {
+    padding-right: 3em;
 }
