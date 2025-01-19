@@ -26,8 +26,8 @@
     <?php if (App\Session::getUser()) { ?>
     <div class="forum-card">
         <div class="forum-header">
-            <h2>Mon Compte</h2>
-            <p class="welcome-text">Bienvenue <?= App\Session::getUser()->getUsername() ?></p>
+            <h2>Bienvenue <?= App\Session::getUser()->getUsername() ?></h2>
+            <p class="welcome-text">Accédez à vos informations en un instant.</p>
         </div>
         <a href="index.php?ctrl=profile&action=index&id=<?= App\Session::getUser()->getId() ?>" class="button button-primary">Mon Compte</a>
         <a href="index.php?ctrl=security&action=logout" class="button button-primary">Déconnexion</a>
